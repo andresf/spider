@@ -6,5 +6,9 @@ unless Kernel.respond_to?(:require_relative)
   end
 end
 
+require_relative 'spider/single_layer_network'
+require_relative 'spider/hebb_net'
+require_relative 'spider/neuron'
+
 module Spider
 end
