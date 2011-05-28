@@ -6,7 +6,7 @@ module Spider
 
     def train(vectors)
       vectors.each do |vector|
-        expected_result = vector.slice!(-1)
+        expected_result = vector.pop
         set_values(vector)
         adjust_weights(vector, expected_result)
       end
