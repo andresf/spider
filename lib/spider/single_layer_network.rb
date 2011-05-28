@@ -17,7 +17,6 @@ module Spider
       @target.add_input(@bias)
     end
 
-    #receives an array with input data
     def run(vector)
       set_values(vector)
       @target.activation_value
