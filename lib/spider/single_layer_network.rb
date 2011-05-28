@@ -1,5 +1,5 @@
 module Spider
-  class SingleLayerNetwork
+  module SingleLayerNetwork
 
     attr_reader :inputs, :target, :bias
 
@@ -15,15 +15,6 @@ module Spider
       @bias ||= Neuron.new(0)
       @bias.value = value
       @target.add_input(@bias)
-    end
-
-    #receives an array or arrays with training data
-    def train(vectors)
-      raise 'Not Implemented'
-    end
-
-    def adjust_weights(vector, result)
-      raise 'Not Implemented'
     end
 
     #receives an array with input data

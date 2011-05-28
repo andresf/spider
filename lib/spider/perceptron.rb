@@ -1,16 +1,17 @@
 module Spider
-  class Perceptron < SingleLayerNetwork
+  class Perceptron
+    include SingleLayerNetwork
     
     attr_reader :learning_rate, :threshold, :max_attempts
 
     # learning_rate = (0..1]
     # threshold     = [0..+inf)
-    def initialize(number_of_inputs, learning_rate = 1, threshold = 2)
+    def initialize(number_of_inputs, params = {})
       super(number_of_inputs)
 
-      @learning_rate = learning_rate
-      @threshold = threshold
-      @max_attempts = 1000
+      @learning_rate = params[:learning_rate] || 1
+      @threshold     = params[:threshold]     || 2
+      @max_attempts  = 1000
       add_bias(1)
     end
 
@@ -20,11 +21,7 @@ module Spider
     end
 
     def train(vectors)
-      attempts = 0
-
-      begin
-        raise 'Could not train the net in the specified time' if 
-          attempts > @max_attempts
+      @max_attempts.times do
         weights_changed = false
 
         vectors.each do |vector|
@@ -39,9 +36,11 @@ module Spider
             adjust_weights(vector, expected_result)
           end
         end
-        
-        attempts += 1
-      end while(weights_changed)
+
+        return unless weights_changed
+      end
+
+      raise 'Could not train the net in the specified time'
     end
 
     def adjust_weights(vector, result)

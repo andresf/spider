@@ -8,13 +8,11 @@ module Spider
       @inputs  = []
       @outputs = []
       
-      @weight = weight
-      @value  = value
+      @weight  = weight
+      @value   = value
     end
 
     def add_input(neuron)
-      @value = nil
-      
       unless @inputs.include?(neuron)
         @inputs << neuron
       end
@@ -35,11 +33,11 @@ module Spider
     end
 
     def activation_value
-      return @value * @weight if @value
       return @inputs.inject(0) { |result, input| 
         result += input.activation_value } if !@inputs.empty?
+      return @value * @weight if @value
 
-      raise "Neuron #{self} has no preset value nor it has input neurons."
+      raise "Neuron #{self} has no preset value nor input neurons."
     end
 
   end

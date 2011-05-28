@@ -5,3 +5,7 @@ require 'spider/perceptron'
 require 'spider/single_layer_network'
 
 include Spider
+
+class TestNet
+  include SingleLayerNetwork
+end

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Perceptron do
 
-  let(:net)     { Perceptron.new(2, 1, 0) }
+  let(:net)     { Perceptron.new(2, :learning_rate => 1, :threshold =>  0) }
   let(:vectors) { [[ 1,  1,  1],
                    [ 1, -1, -1],
                    [-1,  1, -1],

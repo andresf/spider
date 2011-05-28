@@ -1,9 +1,9 @@
 module Spider
-  class HebbNet < SingleLayerNetwork
+  class HebbNet
+    include SingleLayerNetwork
     
     attr_reader :inputs, :target, :bias
 
-    #receives an array or arrays with training data
     def train(vectors)
       vectors.each do |vector|
         expected_result = vector.slice!(-1)

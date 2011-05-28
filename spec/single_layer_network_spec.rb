@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe SingleLayerNetwork do
 
-  let(:net)     { SingleLayerNetwork.new(2) }
+  let(:net)     { TestNet.new(2) }
   let(:vectors) { [[ 1,  1,  1],
                    [ 1, -1, -1],
                    [-1,  1, -1],
