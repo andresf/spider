@@ -31,7 +31,7 @@ describe Neuron do
   end
 
   it "returns the preset value (* weight) if there are no input neurons" do
-    neuron1.value = 1
+    neuron1.value  = 1
     neuron1.weight = 2
     neuron1.activation_value.should == 2
   end
