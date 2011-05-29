@@ -33,11 +33,13 @@ module Spider
     end
 
     def activation_value
-      return @inputs.inject(0) { |result, input| 
-        result += input.activation_value } if !@inputs.empty?
-      return @value * @weight if @value
-
-      raise "Neuron #{self} has no preset value nor input neurons."
+      if @inputs.size > 0
+        return @inputs.inject(0) { |r, input| r + input.activation_value }
+      elsif @value
+        return @value * @weight
+      else
+        raise "Neuron #{self} has no preset value nor input neurons."
+      end
     end
 
   end

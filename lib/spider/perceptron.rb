@@ -2,7 +2,8 @@ module Spider
   class Perceptron
     include SingleLayerNetwork
     
-    attr_reader :learning_rate, :threshold, :max_attempts
+    attr_reader   :learning_rate, :threshold
+    attr_accessor :max_attempts # max_attempts = [0..+inf)
 
     # learning_rate = (0..1]
     # threshold     = [0..+inf)
@@ -13,11 +14,6 @@ module Spider
       @threshold     = params[:threshold]     || 2
       @max_attempts  = 1000
       add_bias(1)
-    end
-
-    # attempts = [0..+inf)
-    def max_attempts(attempts)
-      @max_attempts = attempts
     end
 
     def train(vectors)
