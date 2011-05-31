@@ -115,6 +115,7 @@ Those are 3 different ways to represent a 'C' in our limited space. Let's conver
 Now, let's train the network on this data.
 
     net = Spider::Perceptron.new(25, :learning_rate => 0.5, :treshold => 5)
+    net.train(training_data)
 
 The rest is left to the reader as an exercise.
 
